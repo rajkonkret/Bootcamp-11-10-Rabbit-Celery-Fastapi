@@ -2,14 +2,14 @@ import uvicorn
 from fastapi import FastAPI
 
 from app import celery_app
-from tasks import send_email
+from app.tasks import send_email
 
 app = FastAPI()
 
 
-@app.post("/send-mail")
+@app.post("/send-email")
 def send_mail_endpoint(email: str):
-    task = send_email.dealy(email)
+    task = send_email.delay(email)
     return {
         "message": "Zadanie przyjęte",
         "task_id": task.id
