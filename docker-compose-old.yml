@@ -7,10 +7,8 @@ services:
     ports:
       - "8000:8000"
     depends_on:
-      rabbitmq:
-        condition: service_healthy
-      redis:
-        condition: service_started
+      - rabbitmq
+      - redis
 
   worker:
     build: .
@@ -19,21 +17,14 @@ services:
       --loglevel=info
       --concurrency=1
     depends_on:
-      rabbitmq:
-        condition: service_healthy
-      redis:
-        condition: service_started
+      - rabbitmq
+      - redis
 
   rabbitmq:
     image: rabbitmq:3-management
     ports:
       - "5672:5672"
       - "15672:15672"
-    healthcheck:
-      test: [ "CMD", "rabbitmq-diagnostics", "ping" ]
-      interval: 5s
-      timeout: 5s
-      retries: 10
 
   redis:
     image: redis:7
