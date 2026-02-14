@@ -33,6 +33,8 @@ def get_task_status(task_id: str):
 
     return response
 
-
-if __name__ == '__main__':
-    uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
+# nie jest konieczne gdy uruchmmiamy w dockerze
+# if __name__ == '__main__':
+#     uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
+# {"task_id":"57fa9d2c-f9a7-414a-80b6-f0e9ff866e34","state":"PROGRESS","info":{"step":"Łączenie z serwerem SMTP","progress":30}}%                                 radoslawjaniak@mac ~ % curl http://localhost:8000/tasks/57fa9d2c-f9a7-414a-80b6-f0e9ff866e34
+# {"task_id":"57fa9d2c-f9a7-414a-80b6-f0e9ff866e34","state":"SUCCESS","info":{"status":"ok","email":"test@example.com","progress":100},"result":{"status":"ok","email":"test@example.com","progress":100}}%                                       radoslawjaniak@mac ~ %
