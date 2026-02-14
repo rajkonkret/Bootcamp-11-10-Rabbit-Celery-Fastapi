@@ -1,6 +1,6 @@
 unzip rabbitmq_celery_fastapi.zip
 cd rabbitmq_celery_project
-docker compose up --build
+docker compose up --build - uruchomienie dockera
 
 
 curl -X POST "http://localhost:8000/send-email?email=test@example.com"
