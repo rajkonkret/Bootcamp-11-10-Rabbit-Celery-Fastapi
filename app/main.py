@@ -1,7 +1,7 @@
 import uvicorn
 from fastapi import FastAPI
 
-from app import celery_app
+from app.celery_app import celery_app
 from app.tasks import send_email
 
 app = FastAPI()
