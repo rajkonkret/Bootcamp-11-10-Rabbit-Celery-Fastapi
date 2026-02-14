@@ -1,12 +1,13 @@
 import uvicorn
 from fastapi import FastAPI
+from tasks import send_email
 
 app = FastAPI()
 
 
 @app.post("/send-mail")
 def send_mail_endpoint(email: str):
-    task = send_mail.dealy(email)
+    task = send_email.dealy(email)
     return {
         "message": "Zadanie przyjęte",
         "task_id": task.id
